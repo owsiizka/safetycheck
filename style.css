@@ -1,0 +1,95 @@
+body {
+    background-color: #f7e6e1;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.title {
+    font-size: 32px;
+    white-space: nowrap;
+    color: #214a57;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.bold-italic {
+    font-weight: bold;
+    font-style: italic;
+    color: #214a57;
+}
+
+p {
+    color: #214a57;
+    text-align: center;
+}
+
+label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 10px;
+    color: #214a57;
+}
+
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: none;
+    box-sizing: border-box;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #214a57;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #1a3b45;
+}
+
+.result {
+    margin-top: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    border-radius: 10px;
+}
+
+.about {
+    margin-top: 50px;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.about h2 {
+    text-align: center;
+    color: #214a57;
+    margin-bottom: 20px;
+}
+
+.chart-container {
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        
+.chart-title {
+            font-size: 20px;
+            color: #214a57;
+            margin-bottom: 10px;
+        }

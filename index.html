@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Safety Check</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        function checkText() {
+            var userInput = document.getElementById('userInput').value.toLowerCase();
+            var badWords = ['ass','suicide','sex','dick','bastard','bitch','bollocks','boner','bugger','bullshit','chink','cock','coon','crap','cunt','damn','dick','dildo','douche','dyke','boobies','faggot','fuck','fucker','goddamn','gook','hell','homo','idiot','jerk','jizz','kike','kunt','lesbo','mick','motherfucker','nigga','nigger','piss','pissed','prick','pussy','queer','retard','scumbag','shit','shite','shithead','shithole','skank','slut','spic','tard','tit','twat','wanker','whore','wop','arse','asshole','balls','bint','bloody','bugger','chode','cholo','clit','coonass','cum','cumbubble','dickhead','dipshit','dumbass','fanny','feck','flamer','gash','gonads','handjob','jerkoff','knob','minge','muff','nutjob','paki','pecker','pissflap','poontang','prat','punani','puto','schlong','shag','shitehawk','spunk','tits','tosser','tramp','turd','wazzock','wog','boobs','zipperhead','kill','suicide','nude'];
+            var suspicious = false;
+            var badSentences = ['give me your money','sex for money','I will kill you','i can kill your mom','Im not a killer','if you donate money, no one will know about your photos','show me your ass','i know where you live'];
+            var hasBadSentence = false;
+            for (var i = 0; i < badWords.length; i++) {
+                if (userInput.includes(badWords[i])) {
+                    suspicious = true;
+                    break;
+                }
+            }
+            for (var j = 0; j < badSentences.length; j++) {
+                if (userInput.includes(badSentences[j].toLowerCase())) {
+                    hasBadSentence = true;
+                    break;
+                }
+            }
+            var resultLabel = document.getElementById('resultLabel');
+            if (suspicious) {
+                resultLabel.innerText = 'Suspicious! \n We believe that this message may be dangerous';
+            } else if (hasBadSentence) {
+                resultLabel.innerText = 'This message can be dangerous';
+            } else {
+                resultLabel.innerText = 'This text is not suspicious';
+            }
+        }
+
+        function renderCharts() {
+            // Data for the first chart
+            var victimData = {
+                labels: ['Children (9-15 years old)', 'Teenagers (15-18 years old)'],
+                datasets: [{
+                    label: 'Number of Victims',
+                    data: [400000, 200000],
+                    backgroundColor: ['rgba(75, 192, 192, 0.2)', 'rgba(153, 102, 255, 0.2)'],
+                    borderColor: ['rgba(75, 192, 192, 1)', 'rgba(153, 102, 255, 1)'],
+                    borderWidth: 1
+                }]
+            };
+
+            // Data for the second chart
+            var scammerData = {
+                labels: ['Money Theft', 'Solicit Intimate Photos', 'Other'],
+                datasets: [{
+                    label: 'Scammer Intentions',
+                    data: [70, 20, 10],
+                    backgroundColor: ['rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(255, 206, 86, 0.2)'],
+                    borderColor: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)', 'rgba(255, 206, 86, 1)'],
+                    borderWidth: 1
+                }]
+            };
+
+            // Render the first chart
+            var ctx1 = document.getElementById('victimChart').getContext('2d');
+            new Chart(ctx1, {
+                type: 'bar',
+                data: victimData,
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+
+            // Render the second chart
+            var ctx2 = document.getElementById('scammerChart').getContext('2d');
+            new Chart(ctx2, {
+                type: 'doughnut',
+                data: scammerData,
+                options: {
+                    plugins: {
+                        legend: {
+                            display: true,
+                            position: 'top'
+                        }
+                    }
+                }
+            });
+        }
+
+        window.onload = renderCharts;
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">Safety Check</h1>
+        <p>Check the messages and texts you receive</p>
+        <label for="userInput">Paste your text here to check:</label>
+        <textarea id="userInput" rows="10"></textarea>
+        <button onclick="checkText()">Check</button>
+        <p class="result" id="resultLabel"></p>
+    </div>
+    <div class="container about">
+        <h2>About Us</h2>
+        <p>We are a team of aspiring IT specialists who are interested in helping children who may be potential victims of scammers on the Internet. Our site will help you find out which phrases in online correspondence may raise suspicions</p> 
+    </div>
+    <div class="container website">
+     <p><strong style="font-size: 24px;">Why was this website created?</strong></p> 
+        <p class="centered-text"> 
+    Netizens are often exposed to danger on the Internet. There are many criminals on social networks who sit behind anonymous accounts in order to obtain intimate photos and the like through blackmail. 
+    Solving this problem is very important, because most often children aged 9-12 years old face this problem. 
+    And therefore this site was created with the aim of maintaining the safety of children on the Internet and solving this problem. 
+        </p> 
+    </div>
+    <div class="container statistics">
+<p><strong style="font-size: 24px;">Statistics</strong></p> 
+        <div class="chart-container">
+            <div class="chart-title">Who Becomes a Victim of Fraud?</div>
+            <canvas id="victimChart"></canvas>
+        </div>
+        <div class="chart-container">
+            <div class="chart-title">Purpose of Scammer Contact</div>
+            <canvas id="scammerChart"></canvas> 
+    </div> 
+    </div>
+    <div class="container">
+     <p><strong style="font-size: 24px;">Contact Information for Fraud Victims</strong></p> 
+        <p class="line-height-adjust">
+            If you have become a victim of fraud, you can contact the following numbers for assistance:
+            <br>
+            <br>
+            +972 51 247 4637 - Legal organization that will help with refunds
+            <br>
+            <br>
+            <br>
+            Information and Support Center Ministry of Labor and Social Security of Israel – 118
+            <br>
+            <br>
+            <br>
+            ERAN is a helpline. Toll-free Russian line
+            <br>
+1800 – 24 – 1201
+        </p>
+        </div>
+</body>
+</html>
